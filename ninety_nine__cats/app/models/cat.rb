@@ -8,6 +8,15 @@ class Cat < ApplicationRecord
         age = birth_date.year - now.year
     end
 
+
+    has_many :requests,
+        foreign_key: :cat_id,
+        class_name: :CatRentalRequest,
+        dependent: :destroy
+
+
+
+
     validates :birth_date, presence: true
     validates :age, presence: true
     validates :color, presence: true,
